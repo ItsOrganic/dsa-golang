@@ -25,6 +25,8 @@ func main() {
 	linkedlist.AddElement(8)
 	linkedlist.RemoveLastElement()
 	linkedlist.PrintElement()
+
+	linkedlist.SearchElement(9)
 }
 
 func (ll *LinkedList) AddElement(value int) {
@@ -79,4 +81,16 @@ func (ll *LinkedList) RemoveLastElement() {
 	}
 	fmt.Print("Removed last element :", ll.head.value)
 	current.next = nil
+}
+func (ll *LinkedList) SearchElement(search int) bool {
+	current := ll.head
+	for current != nil {
+		if current.value == search {
+			fmt.Print("Search element found")
+			return true
+		}
+		current = current.next
+	}
+	fmt.Print("Search element not found")
+	return false
 }
