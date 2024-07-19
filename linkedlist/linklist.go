@@ -27,6 +27,13 @@ func main() {
 	linkedlist.PrintElement()
 
 	linkedlist.SearchElement(9)
+	linkedlist.AddElement(2088)
+	linkedlist.AddElement(50)
+	linkedlist.AddElement(6090)
+
+	linkedlist.SortList()
+	//Sorted data
+	linkedlist.PrintElement()
 }
 
 func (ll *LinkedList) AddElement(value int) {
@@ -93,4 +100,25 @@ func (ll *LinkedList) SearchElement(search int) bool {
 	}
 	fmt.Print("Search element not found")
 	return false
+}
+
+func (ll *LinkedList) SortList() {
+	if ll.head == nil {
+		fmt.Print("Empty List")
+		return
+	}
+	current := ll.head
+	index := &Node{}
+	for current != nil {
+		index = current.next
+		for index != nil {
+			if current.value > index.value {
+				temp := current.value
+				current.value = index.value
+				index.value = temp
+			}
+			index = index.next
+		}
+		current = current.next
+	}
 }
